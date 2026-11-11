@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f8f2">
+  <meta name="description" content="A playful, interactive IB Computer Science revision path for Data Representation.">
+  <title>BytePath — Computer Science Quest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="BytePath home">
+        <span class="brand-mark">B<span>›</span></span>
+        <span>bytepath</span>
+      </a>
+      <div class="course-label">YOUR COURSE</div>
+      <div class="course-card">
+        <div class="course-icon">💻</div>
+        <div><strong>IB Computer Science</strong><small>Topic 1 · Data Representation</small></div>
+        <span class="chevron">⌄</span>
+      </div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="learn"><span>🧭</span> Learn <small>›</small></button>
+        <button class="nav-item" data-view="practice"><span>⚡</span> Quick practice</button>
+        <button class="nav-item" data-view="glossary"><span>📚</span> Glossary</button>
+        <button class="nav-item" data-view="progress"><span>📈</span> My progress</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="daily-card">
+          <div class="daily-top"><span>DAILY QUEST</span><span>✨</span></div>
+          <strong id="dailyProgress">0 / 3 lessons</strong>
+          <div class="mini-track"><span id="dailyBar"></span></div>
+          <small>Little steps add up.</small>
+        </div>
+        <div class="profile">
+          <div class="avatar">🧑‍💻</div>
+          <div><strong>CS Explorer</strong><small>Keep your streak alive!</small></div>
+          <button class="more-btn" title="Profile">•••</button>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">B<span>›</span></span> bytepath</div>
+        <div class="breadcrumbs">COURSES <span>/</span> COMPUTER SCIENCE <span>/</span> <b>DATA REPRESENTATION</b></div>
+        <div class="stats">
+          <div class="stat streak"><span>🔥</span><b id="streakCount">0</b><small>streak</small></div>
+          <div class="stat gems"><span>💎</span><b id="xpCount">0</b><small>XP</small></div>
+          <div class="stat hearts"><span>♥</span><b id="heartCount">5</b><small>lives</small></div>
+        </div>
+      </header>
+
+      <section id="learnView" class="view active-view">
+        <div class="welcome-row">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR LEARNING PATH</div>
+            <h1>Build your <span>computer science</span><br class="desktop-break"> superpowers.</h1>
+            <p class="intro">Short lessons. Smart practice. One byte at a time.</p>
+          </div>
+          <div class="mascot" aria-label="Friendly pixel computer mascot">
+            <div class="mascot-spark">✦</div><div class="mascot-screen"><span>•ᴗ•</span></div><div class="mascot-feet"><i></i><i></i></div>
+          </div>
+        </div>
+
+        <div class="course-progress-card">
+          <div class="course-progress-copy"><div><span class="eyebrow">TOPIC 1</span><h2>Data Representation</h2></div><div class="completion"><b id="coursePercent">0%</b><small>complete</small></div></div>
+          <div class="progress-track"><span id="courseBar"></span></div>
+          <div class="progress-foot"><span id="lessonCount">0 of 10 lessons completed</span><span>🎯 Master the fundamentals</span></div>
+        </div>
+
+        <div class="path-heading"><div><h2>Your learning path</h2><p>Complete lessons to unlock the next checkpoint.</p></div><span class="path-tag">10 LESSONS</span></div>
+        <div id="learningPath" class="learning-path"></div>
+        <footer class="page-footer">Made for curious minds · Based on your Computer Science Kognity topic outline</footer>
+      </section>
+
+      <section id="lessonView" class="view">
+        <button class="back-link" id="backToPath">← Back to learning path</button>
+        <div id="lessonContent"></div>
+      </section>
+
+      <section id="practiceView" class="view">
+        <div class="section-hero"><div><div class="eyebrow">TRAIN YOUR BRAIN</div><h1>Quick <span>practice</span></h1><p>Mixed questions from all three sections. See what sticks.</p></div><div class="hero-emoji">⚡</div></div>
+        <div class="practice-panel"><div class="practice-info"><div class="big-icon">🧠</div><div><h2>Knowledge sprint</h2><p>10 questions · Multiple choice · Instant feedback</p></div></div><button class="primary-btn" id="startPractice">Start practice <span>→</span></button></div>
+        <div id="practiceQuiz"></div>
+      </section>
+
+      <section id="glossaryView" class="view">
+        <div class="section-hero"><div><div class="eyebrow">THE IMPORTANT WORDS</div><h1>CS <span>glossary</span></h1><p>Quick definitions for the concepts in this topic.</p></div><div class="hero-emoji">📚</div></div>
+        <div class="search-wrap"><span>⌕</span><input id="glossarySearch" type="search" placeholder="Search a term, e.g. colour depth..." aria-label="Search glossary"></div>
+        <div id="glossaryList" class="glossary-list"></div>
+      </section>
+
+      <section id="progressView" class="view">
+        <div class="section-hero"><div><div class="eyebrow">LOOK HOW FAR YOU'VE COME</div><h1>Your <span>progress</span></h1><p>Your learning stats are saved in this browser.</p></div><div class="hero-emoji">🏆</div></div>
+        <div class="stats-grid">
+          <div class="metric-card"><span>💎</span><b id="progressXP">0</b><small>Total XP earned</small></div>
+          <div class="metric-card"><span>🔥</span><b id="progressStreak">0</b><small>Day streak</small></div>
+          <div class="metric-card"><span>📘</span><b id="progressLessons">0/10</b><small>Lessons completed</small></div>
+          <div class="metric-card"><span>🎯</span><b id="progressAccuracy">—</b><small>Quiz accuracy</small></div>
+        </div>
+        <div class="progress-detail"><h2>Topic mastery</h2><div id="masteryRows"></div></div>
+        <button class="reset-btn" id="resetProgress">Reset all progress</button>
+      </section>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
